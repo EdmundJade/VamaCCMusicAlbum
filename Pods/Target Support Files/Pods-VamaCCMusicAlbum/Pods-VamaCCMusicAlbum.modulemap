@@ -1,0 +1,6 @@
+framework module Pods_VamaCCMusicAlbum {
+  umbrella header "Pods-VamaCCMusicAlbum-umbrella.h"
+
+  export *
+  module * { export * }
+}

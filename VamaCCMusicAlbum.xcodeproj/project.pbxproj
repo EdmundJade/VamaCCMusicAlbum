@@ -11,15 +11,19 @@
 		49D4921A2BA7EE62007195D1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D492192BA7EE62007195D1 /* ViewController.swift */; };
 		49D4921F2BA7EE65007195D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49D4921E2BA7EE65007195D1 /* Assets.xcassets */; };
 		49D492222BA7EE65007195D1 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 49D492212BA7EE65007195D1 /* Base */; };
+		666C7B6AD3CBEFCC40852C1B /* Pods_VamaCCMusicAlbum.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 763A14E5332FDECD425F4D54 /* Pods_VamaCCMusicAlbum.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2746FB4D85BD8DC07D87A3D2 /* Pods-VamaCCMusicAlbum.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VamaCCMusicAlbum.release.xcconfig"; path = "Target Support Files/Pods-VamaCCMusicAlbum/Pods-VamaCCMusicAlbum.release.xcconfig"; sourceTree = "<group>"; };
 		49D492122BA7EE62007195D1 /* VamaCCMusicAlbum.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VamaCCMusicAlbum.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49D492152BA7EE62007195D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		49D492192BA7EE62007195D1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		49D4921E2BA7EE65007195D1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		49D492212BA7EE65007195D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		49D492232BA7EE65007195D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		763A14E5332FDECD425F4D54 /* Pods_VamaCCMusicAlbum.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VamaCCMusicAlbum.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C7E3E51B79F3D5823BB3582D /* Pods-VamaCCMusicAlbum.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VamaCCMusicAlbum.debug.xcconfig"; path = "Target Support Files/Pods-VamaCCMusicAlbum/Pods-VamaCCMusicAlbum.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,17 +31,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				666C7B6AD3CBEFCC40852C1B /* Pods_VamaCCMusicAlbum.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		48231652851C0EFCB1F7050C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				763A14E5332FDECD425F4D54 /* Pods_VamaCCMusicAlbum.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		49D492092BA7EE62007195D1 = {
 			isa = PBXGroup;
 			children = (
 				49D492142BA7EE62007195D1 /* VamaCCMusicAlbum */,
 				49D492132BA7EE62007195D1 /* Products */,
+				EDD4E195B2E93DBC49C75BCB /* Pods */,
+				48231652851C0EFCB1F7050C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -61,6 +76,16 @@
 			path = VamaCCMusicAlbum;
 			sourceTree = "<group>";
 		};
+		EDD4E195B2E93DBC49C75BCB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C7E3E51B79F3D5823BB3582D /* Pods-VamaCCMusicAlbum.debug.xcconfig */,
+				2746FB4D85BD8DC07D87A3D2 /* Pods-VamaCCMusicAlbum.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -68,9 +93,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 49D492262BA7EE65007195D1 /* Build configuration list for PBXNativeTarget "VamaCCMusicAlbum" */;
 			buildPhases = (
+				97A22BFD28A943380F64A883 /* [CP] Check Pods Manifest.lock */,
 				49D4920E2BA7EE62007195D1 /* Sources */,
 				49D4920F2BA7EE62007195D1 /* Frameworks */,
 				49D492102BA7EE62007195D1 /* Resources */,
+				9BE059E4BF3C1448119BAF73 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -125,6 +152,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		97A22BFD28A943380F64A883 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-VamaCCMusicAlbum-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9BE059E4BF3C1448119BAF73 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-VamaCCMusicAlbum/Pods-VamaCCMusicAlbum-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-VamaCCMusicAlbum/Pods-VamaCCMusicAlbum-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VamaCCMusicAlbum/Pods-VamaCCMusicAlbum-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		49D4920E2BA7EE62007195D1 /* Sources */ = {
@@ -202,7 +271,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -259,7 +328,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -271,6 +340,7 @@
 		};
 		49D492272BA7EE65007195D1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C7E3E51B79F3D5823BB3582D /* Pods-VamaCCMusicAlbum.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -282,6 +352,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -297,6 +368,7 @@
 		};
 		49D492282BA7EE65007195D1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2746FB4D85BD8DC07D87A3D2 /* Pods-VamaCCMusicAlbum.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -308,6 +380,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
