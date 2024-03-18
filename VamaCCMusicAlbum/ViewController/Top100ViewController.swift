@@ -7,10 +7,12 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class Top100ViewController: MusicAlbumViewController {
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view.
     }
 

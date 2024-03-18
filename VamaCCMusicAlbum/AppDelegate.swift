@@ -11,22 +11,20 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window:UIWindow?
-    var coordinator: MainCoordinator?
+    var flowCoordinator: MainFlowCoordinator?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         let navController = UINavigationController()
-
+        navController.isNavigationBarHidden = true
         // send that into our coordinator so that it can display view controllers
-        coordinator = MainCoordinator(navigationController: navController)
-        guard let c = coordinator else {
-            fatalError("no coordinator")
+        flowCoordinator = MainFlowCoordinator(navigationController: navController)
+        guard let c = flowCoordinator else {
             return false
         }
-            // tell the coordinator to take over control
+        
+        // tell the coordinator to take over control
         c.start()
-        
-        
         window = UIWindow(frame: UIScreen.main.bounds)
         guard let w = window else {
             return false

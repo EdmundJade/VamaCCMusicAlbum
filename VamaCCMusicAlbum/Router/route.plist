@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>vmPairing</key>
+	<dict>
+		<key>Top100ViewController</key>
+		<string>Top100ViewModel</string>
+	</dict>
+	<key>viewPairing</key>
+	<dict>
+		<key>Top100ViewController</key>
+		<string>Top100View</string>
+	</dict>
+	<key>primaryController</key>
+	<string>Top100ViewController</string>
+</dict>
+</plist>
