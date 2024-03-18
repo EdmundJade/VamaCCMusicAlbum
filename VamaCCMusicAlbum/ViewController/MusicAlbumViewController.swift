@@ -10,6 +10,13 @@ import UIKit
 
 class MusicAlbumViewController:UIViewController {
     weak var coordinator: MainFlowCoordinator?
+    var params: Any? {
+        didSet {
+            if let vm = self.viewModel {
+                vm.params = params
+            }
+        }
+    }
     var viewModel: MusicAlbumViewModel?
     var naturalView: MusicAlbumView?
     
@@ -19,6 +26,7 @@ class MusicAlbumViewController:UIViewController {
         // Do any additional setup after loading the view.
         
         self.viewModel = MusicAlbumViewModel.createWith(vcName: String(describing: type(of: self)))
+        
         self.naturalView = MusicAlbumView.createWith(vcName: String(describing: type(of: self)))
         
         guard let nv = self.naturalView else {
@@ -26,6 +34,9 @@ class MusicAlbumViewController:UIViewController {
         }
         
         if let vm = self.viewModel {
+            if let p = params {
+                vm.params = p
+            }
             nv.bindViewModel(vm)
         }
         self.view.addSubview(nv)

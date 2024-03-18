@@ -19,15 +19,22 @@ class MainFlowCoordinator: MusicAlbumCoordinator {
         if let d = Dictionary<String, Any>.readFrom(String.FileConstants.route), let primary = d[String.KeyConstants.PrimaryController] as? String, let vc = MusicAlbumViewController.createWith(name: primary) {
             vc.coordinator = self
             navigationController.pushViewController(vc, animated: false)
-            //https://rss.applemarketingtools.com/api/v2/us/music/most-played/100/albums.json
         }
     }
     
-    
-    func ownerList() {
-//        let vc = OwnerListViewController()
-//        vc.coordinator = self
-//        navigationController.pushViewController(vc, animated: true)
+    func goToNext() {
+        goToNext(nil)
     }
-
+    
+    func goToNext(_ params:Any?) {
+        if let currentController = navigationController.topViewController, let d = Dictionary<String, Any>.readFrom(String.FileConstants.route), let flowBase = d[String.KeyConstants.flowBase] as? [String:String], let next = flowBase[String(describing: type(of: currentController))], let vc = MusicAlbumViewController.createWith(name: next) {
+            vc.coordinator = self
+            vc.params = params
+            navigationController.pushViewController(vc, animated: true)
+        }
+    }
+    
+    func back() {
+        navigationController.popViewController(animated: true)
+    }
 }

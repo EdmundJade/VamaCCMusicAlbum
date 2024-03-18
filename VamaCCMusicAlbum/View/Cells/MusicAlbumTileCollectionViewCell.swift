@@ -39,14 +39,14 @@ class MusicAlbumTileCollectionViewCell: UICollectionViewCell {
         return lbl
     }()
     
-    private lazy var musician: UILabel = {
-        let musician = UILabel()
-        musician.font = .systemFont(ofSize: 12, weight: .semibold)
-        musician.translatesAutoresizingMaskIntoConstraints = false
-        musician.textColor = UIColor(rgb: 0xB5B5B5)
-        musician.numberOfLines = 1
-        musician.lineBreakMode = .byTruncatingTail
-        return musician
+    private lazy var artist: UILabel = {
+        let artist = UILabel()
+        artist.font = .systemFont(ofSize: 12, weight: .semibold)
+        artist.translatesAutoresizingMaskIntoConstraints = false
+        artist.textColor = UIColor(rgb: 0xB5B5B5)
+        artist.numberOfLines = 1
+        artist.lineBreakMode = .byTruncatingTail
+        return artist
     }()
     
     override init(frame: CGRect) {
@@ -62,7 +62,7 @@ class MusicAlbumTileCollectionViewCell: UICollectionViewCell {
     func setupViews() {
         self.contentView.addSubview(self.imageView)
         self.contentView.addSubview(self.title)
-        self.contentView.addSubview(self.musician)
+        self.contentView.addSubview(self.artist)
     }
     
     func setupConstraints() {
@@ -77,10 +77,10 @@ class MusicAlbumTileCollectionViewCell: UICollectionViewCell {
         let titleConstraints = [
             title.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: padding),
             title.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -padding),
-            musician.leadingAnchor.constraint(equalTo: title.leadingAnchor),
-            musician.trailingAnchor.constraint(equalTo: title.trailingAnchor),
-            musician.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant:-padding),
-            musician.topAnchor.constraint(equalTo: title.bottomAnchor)
+            artist.leadingAnchor.constraint(equalTo: title.leadingAnchor),
+            artist.trailingAnchor.constraint(equalTo: title.trailingAnchor),
+            artist.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant:-padding),
+            artist.topAnchor.constraint(equalTo: title.bottomAnchor)
         ]
         NSLayoutConstraint.activate(titleConstraints)
     }
@@ -96,7 +96,7 @@ class MusicAlbumTileCollectionViewCell: UICollectionViewCell {
             return
         }
         
-        self.musician.text = artistName.capitalized
+        self.artist.text = artistName.capitalized
         self.title.text = albumName.capitalized
         
     }
@@ -111,27 +111,14 @@ class MusicAlbumTileCollectionViewCell: UICollectionViewCell {
         if let imageCurrent = image {
             self.imageView.image = imageCurrent
         } else {
-            downloadImage(from: iURL)
+            self.imageView.downloadImage(from: iURL) { image in
+                if let i = image {
+                    self.image = i
+                }
+            }
         }
         
     }
     
-    func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
-        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
-    }
-    
-    func downloadImage(from url: URL) {
-        print("Download Started")
-        getData(from: url) { data, response, error in
-            guard let data = data, error == nil else { return }
-            print(response?.suggestedFilename ?? url.lastPathComponent)
-            print("Download Finished")
-            // always update the UI from the main thread
-            DispatchQueue.main.async() { [weak self] in
-                self?.image = UIImage(data: data)
-                self?.imageView.image = self?.image
-            }
-        }
-    }
     
 }

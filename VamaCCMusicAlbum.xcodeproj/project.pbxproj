@@ -26,6 +26,11 @@
 		49D492542BA846BE007195D1 /* MusicAlbumTileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D492532BA846BE007195D1 /* MusicAlbumTileCollectionViewCell.swift */; };
 		49D492562BA849FB007195D1 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D492552BA849FB007195D1 /* UIColor+Hex.swift */; };
 		49D492582BA86F40007195D1 /* MusicAlbumTileCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D492572BA86F40007195D1 /* MusicAlbumTileCollectionHeaderView.swift */; };
+		49D4925A2BA89313007195D1 /* AlbumDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D492592BA89313007195D1 /* AlbumDetailViewController.swift */; };
+		49D4925C2BA8936F007195D1 /* AlbumDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D4925B2BA8936F007195D1 /* AlbumDetailView.swift */; };
+		49D4925E2BA8937B007195D1 /* AlbumDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D4925D2BA8937B007195D1 /* AlbumDetailViewModel.swift */; };
+		49D492602BA8ABB3007195D1 /* UIImageView+Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D4925F2BA8ABB3007195D1 /* UIImageView+Loading.swift */; };
+		49D492622BA8B54D007195D1 /* GenreButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D492612BA8B54D007195D1 /* GenreButton.swift */; };
 		666C7B6AD3CBEFCC40852C1B /* Pods_VamaCCMusicAlbum.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 763A14E5332FDECD425F4D54 /* Pods_VamaCCMusicAlbum.framework */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +57,11 @@
 		49D492532BA846BE007195D1 /* MusicAlbumTileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicAlbumTileCollectionViewCell.swift; sourceTree = "<group>"; };
 		49D492552BA849FB007195D1 /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
 		49D492572BA86F40007195D1 /* MusicAlbumTileCollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicAlbumTileCollectionHeaderView.swift; sourceTree = "<group>"; };
+		49D492592BA89313007195D1 /* AlbumDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailViewController.swift; sourceTree = "<group>"; };
+		49D4925B2BA8936F007195D1 /* AlbumDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailView.swift; sourceTree = "<group>"; };
+		49D4925D2BA8937B007195D1 /* AlbumDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailViewModel.swift; sourceTree = "<group>"; };
+		49D4925F2BA8ABB3007195D1 /* UIImageView+Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Loading.swift"; sourceTree = "<group>"; };
+		49D492612BA8B54D007195D1 /* GenreButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreButton.swift; sourceTree = "<group>"; };
 		763A14E5332FDECD425F4D54 /* Pods_VamaCCMusicAlbum.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VamaCCMusicAlbum.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7E3E51B79F3D5823BB3582D /* Pods-VamaCCMusicAlbum.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VamaCCMusicAlbum.debug.xcconfig"; path = "Target Support Files/Pods-VamaCCMusicAlbum/Pods-VamaCCMusicAlbum.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -136,6 +146,7 @@
 				49D492332BA81F31007195D1 /* Constants.swift */,
 				49D492372BA820B8007195D1 /* MusicAlbumViewController+create.swift */,
 				49D492552BA849FB007195D1 /* UIColor+Hex.swift */,
+				49D4925F2BA8ABB3007195D1 /* UIImageView+Loading.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -145,6 +156,7 @@
 			children = (
 				49D4923E2BA82675007195D1 /* Top100ViewModel.swift */,
 				49D492402BA826DA007195D1 /* MusicAlbumViewModel.swift */,
+				49D4925D2BA8937B007195D1 /* AlbumDetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -155,6 +167,8 @@
 				49D492522BA846A5007195D1 /* Cells */,
 				49D492452BA83485007195D1 /* MusicAlbumView.swift */,
 				49D4924B2BA835BC007195D1 /* Top100View.swift */,
+				49D4925B2BA8936F007195D1 /* AlbumDetailView.swift */,
+				49D492612BA8B54D007195D1 /* GenreButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -172,6 +186,7 @@
 			children = (
 				49D4924D2BA8387F007195D1 /* MusicAlbumViewController.swift */,
 				49D4924E2BA8387F007195D1 /* Top100ViewController.swift */,
+				49D492592BA89313007195D1 /* AlbumDetailViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -310,6 +325,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				49D492542BA846BE007195D1 /* MusicAlbumTileCollectionViewCell.swift in Sources */,
+				49D492622BA8B54D007195D1 /* GenreButton.swift in Sources */,
 				49D492352BA81F31007195D1 /* DictionaryAdditions.swift in Sources */,
 				49D4924C2BA835BC007195D1 /* Top100View.swift in Sources */,
 				49D4922E2BA816C5007195D1 /* MainCoordinator.swift in Sources */,
@@ -318,12 +334,16 @@
 				49D4923F2BA82675007195D1 /* Top100ViewModel.swift in Sources */,
 				49D492582BA86F40007195D1 /* MusicAlbumTileCollectionHeaderView.swift in Sources */,
 				49D492462BA83485007195D1 /* MusicAlbumView.swift in Sources */,
+				49D492602BA8ABB3007195D1 /* UIImageView+Loading.swift in Sources */,
 				49D492502BA8387F007195D1 /* MusicAlbumViewController.swift in Sources */,
 				49D492562BA849FB007195D1 /* UIColor+Hex.swift in Sources */,
 				49D4922F2BA816C5007195D1 /* ProjectCoordinator.swift in Sources */,
 				49D492162BA7EE62007195D1 /* AppDelegate.swift in Sources */,
+				49D4925C2BA8936F007195D1 /* AlbumDetailView.swift in Sources */,
 				49D492362BA81F31007195D1 /* Constants.swift in Sources */,
 				49D492412BA826DA007195D1 /* MusicAlbumViewModel.swift in Sources */,
+				49D4925A2BA89313007195D1 /* AlbumDetailViewController.swift in Sources */,
+				49D4925E2BA8937B007195D1 /* AlbumDetailViewModel.swift in Sources */,
 				49D492382BA820B8007195D1 /* MusicAlbumViewController+create.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -469,6 +489,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RM58XW84X9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = VamaCCMusicAlbum/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -497,6 +518,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RM58XW84X9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = VamaCCMusicAlbum/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

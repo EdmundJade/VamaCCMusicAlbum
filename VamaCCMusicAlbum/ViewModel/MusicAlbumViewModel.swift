@@ -8,6 +8,8 @@
 import Foundation
 
 class MusicAlbumViewModel: NSObject {
+    var params:Any? 
+    
     public static func createWith(vcName:String) -> MusicAlbumViewModel? {
         guard let d = Dictionary<String, Any>.readFrom(String.FileConstants.route), let pairing = d[String.KeyConstants.vmPairing] as? [String: String] else {
             return nil

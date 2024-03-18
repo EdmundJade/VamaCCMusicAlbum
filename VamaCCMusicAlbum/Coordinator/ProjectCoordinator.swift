@@ -8,7 +8,7 @@
 import UIKit
 
 protocol MusicAlbumCoordinator {
-    var childCoordinators: [MusicAlbumCoordinator] { get set }
+    var childCoordinators: [MusicAlbumCoordinator] { get set } //for future purposes
     var navigationController: UINavigationController { get set }
 
     func start()

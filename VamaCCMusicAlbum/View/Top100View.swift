@@ -66,11 +66,13 @@ class Top100View: MusicAlbumView {
         vm.getData { (array,error) in
             if let a = array {
                 self.allItems.append(contentsOf: a)
+                
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
+            } else {
+                //TODO: add error handling (Retry)
             }
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
-            }
-            
         }
     }
 }
@@ -78,18 +80,15 @@ class Top100View: MusicAlbumView {
 
 extension Top100View: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let item = allItems[indexPath.item]
+        guard let vm = viewModel as? Top100ViewModel else {
+            return
+        }
         
+        vm.selectItem(item)
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        print(scrollView.contentOffset)
-        
-//        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate, let flowCoordinator = appDelegate.flowCoordinator else {
-//            return
-//        }
-        
-//        flowCoordinator.navigationController.setNavigationBarHidden(scrollView.contentOffset.y <= header.bounds.maxY, animated: true)
-        
         if let header = self.collectionView.supplementaryView(forElementKind: UICollectionView.elementKindSectionHeader, at: IndexPath(item: 0, section: 0)) as? MusicAlbumTileCollectionHeaderView {
             
             switch header.switchModeOnOffSet(scrollView.contentOffset.y+scrollView.adjustedContentInset.top) {
@@ -121,7 +120,6 @@ extension Top100View: UICollectionViewDataSource {
         
         let item = allItems[indexPath.item]
         cell.bindData(item)
-        
         
         return cell
     }

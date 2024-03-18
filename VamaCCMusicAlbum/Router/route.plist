@@ -6,13 +6,22 @@
 	<dict>
 		<key>Top100ViewController</key>
 		<string>Top100ViewModel</string>
+		<key>AlbumDetailViewController</key>
+		<string>AlbumDetailViewModel</string>
 	</dict>
 	<key>viewPairing</key>
 	<dict>
 		<key>Top100ViewController</key>
 		<string>Top100View</string>
+		<key>AlbumDetailViewController</key>
+		<string>AlbumDetailView</string>
 	</dict>
 	<key>primaryController</key>
 	<string>Top100ViewController</string>
+	<key>flowBase</key>
+	<dict>
+		<key>Top100ViewController</key>
+		<string>AlbumDetailViewController</string>
+	</dict>
 </dict>
 </plist>
