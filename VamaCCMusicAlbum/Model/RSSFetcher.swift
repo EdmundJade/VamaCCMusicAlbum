@@ -6,32 +6,42 @@
 //
 
 import Foundation
+import RealmSwift
 
 public class RSSFetcher {
-    func fetchData(completion: @escaping ([[String:Any]]?, Error?) -> Void) {
+    func fetchData(completion: @escaping (Results<Feed>?, Error?) -> Void) {
         guard let url = URL(string: String.URLConstants.rssFeed) else {
-            completion(nil, NSError(domain: String.errorDomainConstants.rssFeed, code: Int.errorCodeConstants.rssFeedAbsence, userInfo: [NSLocalizedDescriptionKey : String.errorCodeMessage.rssFeedAbsence]) as Error)
+            completion(FeedInstance.shared.feeds, NSError(domain: String.errorDomainConstants.rssFeed, code: Int.errorCodeConstants.rssFeedAbsence, userInfo: [NSLocalizedDescriptionKey : String.errorCodeMessage.rssFeedAbsence]) as Error)
             return
         }
-
+        
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-            guard let data = data else { return }
+            guard let data = data else {
+                completion(FeedInstance.shared.feeds, NSError(domain: String.errorDomainConstants.rssFeed, code: Int.errorCodeConstants.rssFeedNoResults, userInfo: [NSLocalizedDescriptionKey : String.errorCodeMessage.rssFeedNoResults]) as Error)
+                return
+            }
             do {
-                if let array = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String:Any]{
-                    guard let arr = array[String.KeyConstants.rssFeed] as? [String:Any], let allResultsArray = arr[String.KeyConstants.rssResults] as? [[String:Any]] else {
-                        completion(nil, NSError(domain: String.errorDomainConstants.rssFeed, code: Int.errorCodeConstants.rssFeedNoResults, userInfo: [NSLocalizedDescriptionKey : String.errorCodeMessage.rssFeedNoResults]) as Error)
+                if let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String:Any]{
+                    guard let jsonFeedObject = json[String.KeyConstants.rssFeed] as? [String:Any] else {
+                        completion(FeedInstance.shared.feeds, NSError(domain: String.errorDomainConstants.rssFeed, code: Int.errorCodeConstants.rssFeedNoResults, userInfo: [NSLocalizedDescriptionKey : String.errorCodeMessage.rssFeedNoResults]) as Error)
                         return
                     }
                     
-                    completion(allResultsArray,nil)       
+                    DispatchQueue.main.async {
+                        FeedRepository.shared.parseJson(json: jsonFeedObject) { error in
+                            let feeds = FeedInstance.shared.feeds
+                            completion(feeds,error)
+                        }
+                    }
+                    
                 }
             } catch {
-                print(error)
-                completion(nil, error)
+                completion(FeedInstance.shared.feeds, error)
             }
         }
         task.resume()
     }
+    
 }
 
 

@@ -54,7 +54,10 @@ class MusicAlbumTileCollectionHeaderView: UICollectionReusableView {
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate, let flowCoordinator = appDelegate.flowCoordinator {
+            flowCoordinator.handleAlert(title: String.viewStrings.errorInitializationForObjects)
+        }
+        fatalError(String.viewStrings.errorInitializationForObjects)
     }
     
     private func setupConstraints() {

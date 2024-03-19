@@ -12,12 +12,6 @@ class AlbumDetailView: MusicAlbumView {
     
     let verticalStackPadding = 16.0
     let elementPadding = 12.0
-    var params:[String:Any]? {
-        didSet {
-            self.bindImage()
-            self.bindText()
-        }
-    }
     
     private lazy var imageView: UIImageView = {
         let view = UIImageView()
@@ -138,7 +132,10 @@ class AlbumDetailView: MusicAlbumView {
     
     
     required init(coder aDecoder: NSCoder) {
-        fatalError("This class does not support NSCoding")
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate, let flowCoordinator = appDelegate.flowCoordinator {
+            flowCoordinator.handleAlert(title: String.viewStrings.errorCoding)
+        }
+        fatalError(String.viewStrings.errorCoding)
     }
     
     func setupViews() {
@@ -194,7 +191,7 @@ class AlbumDetailView: MusicAlbumView {
     }
     
     func bindImage() {
-        guard let i = params, let imageURL = i[String.KeyConstants.albumImage] as? String, let iURL = URL(string: imageURL) else {
+        guard let vm = self.viewModel as? AlbumDetailViewModel, let i = vm.currentAlbum, let iURL = URL(string: i.artworkUrl100) else {
             return
         }
         
@@ -202,58 +199,48 @@ class AlbumDetailView: MusicAlbumView {
     }
     
     func bindText() {
-        guard let i = params, let artist = i[String.KeyConstants.albumArtistName] as? String, let title = i[String.KeyConstants.albumName] as? String else {
+        guard let vm = self.viewModel as? AlbumDetailViewModel, let i = vm.currentAlbum else {
             return
         }
         
-        self.title.text = title
-        self.artist.text = artist
+        self.title.text = i.name.capitalized
+        self.artist.text = i.artistName.capitalized
         
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
         dateFormatter.dateFormat = "yyyy-MM-dd"
         
-        if let releaseDate = i[String.KeyConstants.releaseDate] as? String, let date = dateFormatter.date(from:releaseDate) {
+        if let date = dateFormatter.date(from:i.releaseDate) {
             dateFormatter.dateFormat = "dd MMM, yyyy"
-            self.releaseDate.text = "\(String.viewStrings.released) \(dateFormatter.string(from: date))\n\(String.viewStrings.copyRight)"
+            self.releaseDate.text = "\(String.viewStrings.released) \(dateFormatter.string(from: date))\n\(vm.getCopyRightInfo())"
         }
         
-        if let genres = i[String.KeyConstants.genres] as? [[String : String]] {
+        if vm.genres.count > 0 {
             if self.horizontalStack.arrangedSubviews.count > 0 {
                 for view in self.horizontalStack.arrangedSubviews {
                     self.horizontalStack.removeArrangedSubview(view)
                 }
             }
             
-            for genre in genres {
+            for genre in vm.genres {
                 self.addGenre(genre)
             }
             
         }
     }
     
-    func addGenre(_ genre:[String:String]) {
-        guard let name = genre[String.KeyConstants.genreName] else {
-            return
-        }
-        
+    func addGenre(_ genre:Genre) {
         let button = GenreButton(genre: genre)
         button.addTarget(self, action: #selector(visitGenre(_:)), for: .touchUpInside)
-        button.setAttributedTitle(NSAttributedString(string:name, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 10, weight: .medium)]), for: .normal)
+        button.setAttributedTitle(NSAttributedString(string:genre.name, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 10, weight: .medium)]), for: .normal)
         
         self.horizontalStack.addArrangedSubview(button)
     }
     
     override func bindViewModel(_ viewModel:MusicAlbumViewModel) {
         super.bindViewModel(viewModel)
-        guard let vm = self.viewModel as? AlbumDetailViewModel else {
-            return
-        }
-        
-        if let params = vm.params as? [String:Any] {
-            self.params = params
-        }
-        
+        self.bindImage()
+        self.bindText()
     }
     
     @objc func tapBack(_ sender: UIButton) {

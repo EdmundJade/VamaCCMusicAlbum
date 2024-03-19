@@ -37,4 +37,27 @@ class MainFlowCoordinator: MusicAlbumCoordinator {
     func back() {
         navigationController.popViewController(animated: true)
     }
+    
+    func handleAlert(title: String, message:String? = nil, yesAction:UIAlertAction? = nil, noAction:UIAlertAction? = nil) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        if let y = yesAction {
+            alertController.addAction(y)
+        }
+        
+        if let n = noAction {
+            alertController.addAction(n)
+        }
+        
+        if alertController.actions.count == 0 {
+            let okAction = UIAlertAction(title: String.viewStrings.ok, style: .cancel) { _ in
+                // Handle No button tap
+            }
+            alertController.addAction(okAction)
+        }
+        
+        if let currentController = navigationController.topViewController {
+            currentController.present(alertController, animated: true, completion: nil)
+        }
+    }
 }

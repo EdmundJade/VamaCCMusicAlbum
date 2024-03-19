@@ -19,7 +19,7 @@ extension UIImageView {
                 completion?(nil)
                 return
             }
-            print(response?.suggestedFilename ?? url.lastPathComponent)
+            
             // always update the UI from the main thread
             DispatchQueue.main.async() { [weak self] in
                 self?.image = UIImage(data: data)

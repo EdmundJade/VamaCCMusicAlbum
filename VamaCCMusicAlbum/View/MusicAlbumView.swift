@@ -35,7 +35,10 @@ class MusicAlbumView: UIView {
     }
     
     required init(coder aDecoder: NSCoder) {
-        fatalError("This class does not support NSCoding")
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate, let flowCoordinator = appDelegate.flowCoordinator {
+            flowCoordinator.handleAlert(title: String.viewStrings.errorCoding)
+        }
+        fatalError(String.viewStrings.errorCoding)
     }
     
     func bindViewModel(_ viewModel:MusicAlbumViewModel) {

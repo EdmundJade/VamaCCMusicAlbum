@@ -14,7 +14,6 @@ let mosiacReferenceSize = 46.0
 
 class Top100View: MusicAlbumView {
     
-    var allItems:[[String: Any]] = []
     
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -28,23 +27,49 @@ class Top100View: MusicAlbumView {
         cv.delegate = self
         cv.dataSource = self
         cv.isScrollEnabled = true
-        
+        let refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: String.viewStrings.pullToRefresh)
+        refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
+        cv.refreshControl = refreshControl
         cv.register(MusicAlbumTileCollectionViewCell.self, forCellWithReuseIdentifier: MusicAlbumTileCollectionViewCell.id)
         cv.register(MusicAlbumTileCollectionHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: MusicAlbumTileCollectionHeaderView.id)
         
         return cv
     }()
     
+    lazy var activityIndicator: UIActivityIndicatorView = {
+        var center = CGPoint.zero
+        if let delegate = UIApplication.shared.delegate as? AppDelegate, let flowCoordinator = delegate.flowCoordinator, let top = flowCoordinator.navigationController.topViewController{
+            center = top.view.center
+        }
+        
+        if #available(iOS 13.0, *) {
+            let activityView = UIActivityIndicatorView(style: .large)
+            activityView.center = center
+            activityView.hidesWhenStopped = true
+            return activityView
+        } else {
+            let activityView = UIActivityIndicatorView(style: .whiteLarge)
+            activityView.center = center
+            activityView.hidesWhenStopped = true
+            return activityView
+        }
+    }()
+    
     required init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .white
         self.addSubview(collectionView)
+        self.addSubview(activityIndicator)
         self.setUpConstraints()
     }
     
     
     required init(coder aDecoder: NSCoder) {
-        fatalError("This class does not support NSCoding")
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate, let flowCoordinator = appDelegate.flowCoordinator {
+            flowCoordinator.handleAlert(title: String.viewStrings.errorCoding)
+        }
+        fatalError(String.viewStrings.errorCoding)
     }
     
     func setUpConstraints() {
@@ -59,31 +84,45 @@ class Top100View: MusicAlbumView {
     
     override func bindViewModel(_ viewModel:MusicAlbumViewModel) {
         super.bindViewModel(viewModel)
+        self.getData()
+    }
+    
+    func getData() {
         guard let vm = self.viewModel as? Top100ViewModel else {
             return
         }
         
-        vm.getData { (array,error) in
-            if let a = array {
-                self.allItems.append(contentsOf: a)
-                
-                DispatchQueue.main.async {
-                    self.collectionView.reloadData()
-                }
-            } else {
-                //TODO: add error handling (Retry)
+        if vm.albums == nil {
+            activityIndicator.startAnimating()
+        } else if let albums = vm.albums, albums.isEmpty {
+            activityIndicator.startAnimating()
+        }
+        
+        vm.getData { () in
+            if self.activityIndicator.isAnimating {
+                self.activityIndicator.stopAnimating()
+            }
+            self.collectionView.reloadData()
+            if let rc = self.collectionView.refreshControl {
+                rc.endRefreshing()
             }
         }
+    }
+    
+    @objc func refresh(_ sender: UIRefreshControl) {
+       // Code to refresh table view
+        self.getData()
     }
 }
 
 
 extension Top100View: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let item = allItems[indexPath.item]
-        guard let vm = viewModel as? Top100ViewModel else {
+        
+        guard let vm = viewModel as? Top100ViewModel, let items = vm.albums else {
             return
         }
+        let item = items[indexPath.item]
         
         vm.selectItem(item)
     }
@@ -110,7 +149,11 @@ extension Top100View: UICollectionViewDelegate {
 
 extension Top100View: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return allItems.count
+        guard let vm = viewModel as? Top100ViewModel, let items = vm.albums else {
+            return 0
+        }
+        
+        return items.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -118,7 +161,11 @@ extension Top100View: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         
-        let item = allItems[indexPath.item]
+        guard let vm = viewModel as? Top100ViewModel, let items = vm.albums else {
+            return UICollectionViewCell()
+        }
+        
+        let item = items[indexPath.item]
         cell.bindData(item)
         
         return cell

@@ -31,6 +31,13 @@
 		49D4925E2BA8937B007195D1 /* AlbumDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D4925D2BA8937B007195D1 /* AlbumDetailViewModel.swift */; };
 		49D492602BA8ABB3007195D1 /* UIImageView+Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D4925F2BA8ABB3007195D1 /* UIImageView+Loading.swift */; };
 		49D492622BA8B54D007195D1 /* GenreButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D492612BA8B54D007195D1 /* GenreButton.swift */; };
+		49D492642BA9220B007195D1 /* MusicAlbum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D492632BA9220B007195D1 /* MusicAlbum.swift */; };
+		49D492662BA93408007195D1 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D492652BA93408007195D1 /* Genre.swift */; };
+		49D4926A2BA93473007195D1 /* FeedRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D492692BA93473007195D1 /* FeedRepository.swift */; };
+		49D4926C2BA93555007195D1 /* MusicAlbumsInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D4926B2BA93555007195D1 /* MusicAlbumsInstance.swift */; };
+		49D492742BA937F3007195D1 /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D492732BA937F3007195D1 /* Feed.swift */; };
+		49D492782BA96EC6007195D1 /* FeedInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D492772BA96EC6007195D1 /* FeedInstance.swift */; };
+		49D4927C2BA97912007195D1 /* Realm+Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D4927B2BA97912007195D1 /* Realm+Parser.swift */; };
 		666C7B6AD3CBEFCC40852C1B /* Pods_VamaCCMusicAlbum.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 763A14E5332FDECD425F4D54 /* Pods_VamaCCMusicAlbum.framework */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +69,13 @@
 		49D4925D2BA8937B007195D1 /* AlbumDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailViewModel.swift; sourceTree = "<group>"; };
 		49D4925F2BA8ABB3007195D1 /* UIImageView+Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Loading.swift"; sourceTree = "<group>"; };
 		49D492612BA8B54D007195D1 /* GenreButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreButton.swift; sourceTree = "<group>"; };
+		49D492632BA9220B007195D1 /* MusicAlbum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicAlbum.swift; sourceTree = "<group>"; };
+		49D492652BA93408007195D1 /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
+		49D492692BA93473007195D1 /* FeedRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedRepository.swift; sourceTree = "<group>"; };
+		49D4926B2BA93555007195D1 /* MusicAlbumsInstance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicAlbumsInstance.swift; sourceTree = "<group>"; };
+		49D492732BA937F3007195D1 /* Feed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feed.swift; sourceTree = "<group>"; };
+		49D492772BA96EC6007195D1 /* FeedInstance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedInstance.swift; sourceTree = "<group>"; };
+		49D4927B2BA97912007195D1 /* Realm+Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Realm+Parser.swift"; sourceTree = "<group>"; };
 		763A14E5332FDECD425F4D54 /* Pods_VamaCCMusicAlbum.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VamaCCMusicAlbum.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7E3E51B79F3D5823BB3582D /* Pods-VamaCCMusicAlbum.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VamaCCMusicAlbum.debug.xcconfig"; path = "Target Support Files/Pods-VamaCCMusicAlbum/Pods-VamaCCMusicAlbum.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -177,6 +191,13 @@
 			isa = PBXGroup;
 			children = (
 				49D492432BA830D2007195D1 /* RSSFetcher.swift */,
+				49D492632BA9220B007195D1 /* MusicAlbum.swift */,
+				49D492652BA93408007195D1 /* Genre.swift */,
+				49D492732BA937F3007195D1 /* Feed.swift */,
+				49D492692BA93473007195D1 /* FeedRepository.swift */,
+				49D492772BA96EC6007195D1 /* FeedInstance.swift */,
+				49D4927B2BA97912007195D1 /* Realm+Parser.swift */,
+				49D4926B2BA93555007195D1 /* MusicAlbumsInstance.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -325,17 +346,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				49D492542BA846BE007195D1 /* MusicAlbumTileCollectionViewCell.swift in Sources */,
+				49D492742BA937F3007195D1 /* Feed.swift in Sources */,
 				49D492622BA8B54D007195D1 /* GenreButton.swift in Sources */,
+				49D492662BA93408007195D1 /* Genre.swift in Sources */,
 				49D492352BA81F31007195D1 /* DictionaryAdditions.swift in Sources */,
 				49D4924C2BA835BC007195D1 /* Top100View.swift in Sources */,
 				49D4922E2BA816C5007195D1 /* MainCoordinator.swift in Sources */,
 				49D492442BA830D2007195D1 /* RSSFetcher.swift in Sources */,
 				49D492512BA8387F007195D1 /* Top100ViewController.swift in Sources */,
+				49D492642BA9220B007195D1 /* MusicAlbum.swift in Sources */,
 				49D4923F2BA82675007195D1 /* Top100ViewModel.swift in Sources */,
 				49D492582BA86F40007195D1 /* MusicAlbumTileCollectionHeaderView.swift in Sources */,
 				49D492462BA83485007195D1 /* MusicAlbumView.swift in Sources */,
+				49D4926C2BA93555007195D1 /* MusicAlbumsInstance.swift in Sources */,
 				49D492602BA8ABB3007195D1 /* UIImageView+Loading.swift in Sources */,
 				49D492502BA8387F007195D1 /* MusicAlbumViewController.swift in Sources */,
+				49D4926A2BA93473007195D1 /* FeedRepository.swift in Sources */,
+				49D4927C2BA97912007195D1 /* Realm+Parser.swift in Sources */,
 				49D492562BA849FB007195D1 /* UIColor+Hex.swift in Sources */,
 				49D4922F2BA816C5007195D1 /* ProjectCoordinator.swift in Sources */,
 				49D492162BA7EE62007195D1 /* AppDelegate.swift in Sources */,
@@ -345,6 +372,7 @@
 				49D4925A2BA89313007195D1 /* AlbumDetailViewController.swift in Sources */,
 				49D4925E2BA8937B007195D1 /* AlbumDetailViewModel.swift in Sources */,
 				49D492382BA820B8007195D1 /* MusicAlbumViewController+create.swift in Sources */,
+				49D492782BA96EC6007195D1 /* FeedInstance.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -494,8 +522,7 @@
 				INFOPLIST_FILE = VamaCCMusicAlbum/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -523,8 +550,7 @@
 				INFOPLIST_FILE = VamaCCMusicAlbum/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

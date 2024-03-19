@@ -28,7 +28,6 @@ extension Dictionary {
             return plist
         } catch {
             // Error Handling
-            print("Unable to read from plist")
             return nil
         }
     }

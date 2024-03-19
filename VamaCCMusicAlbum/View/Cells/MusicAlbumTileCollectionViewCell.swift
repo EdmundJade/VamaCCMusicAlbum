@@ -10,7 +10,7 @@ import UIKit
 
 class MusicAlbumTileCollectionViewCell: UICollectionViewCell {
     let padding = 8.0
-    var item:[String: Any]?
+    var item:MusicAlbum?
     var image:UIImage?
     
     static var id: String {
@@ -56,7 +56,10 @@ class MusicAlbumTileCollectionViewCell: UICollectionViewCell {
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate, let flowCoordinator = appDelegate.flowCoordinator {
+            flowCoordinator.handleAlert(title: String.viewStrings.errorInitializationForObjects)
+        }
+        fatalError(String.viewStrings.errorInitializationForObjects)
     }
     
     func setupViews() {
@@ -85,39 +88,34 @@ class MusicAlbumTileCollectionViewCell: UICollectionViewCell {
         NSLayoutConstraint.activate(titleConstraints)
     }
     
-    func bindData(_ item: [String: Any]) {
+    func bindData(_ item: MusicAlbum) {
         self.item = item
         self.bindImage()
         self.bindLabels()
     }
     
     func bindLabels() {
-        guard let i = item, let albumName = i[String.KeyConstants.albumName] as? String, let artistName = i[String.KeyConstants.albumArtistName] as? String else {
+        guard let i = item else {
             return
         }
         
-        self.artist.text = artistName.capitalized
-        self.title.text = albumName.capitalized
+        self.artist.text = i.artistName.capitalized
+        self.title.text = i.name.capitalized
         
     }
     
     func bindImage() {
-        guard let i = item, let imageURL = i[String.KeyConstants.albumImage] as? String, let iURL = URL(string: imageURL) else {
+        guard let i = item, let iURL = URL(string: i.artworkUrl100) else {
             return
         }
         
         self.imageView.image = UIImage(named: "placeholder")
     
-        if let imageCurrent = image {
-            self.imageView.image = imageCurrent
-        } else {
-            self.imageView.downloadImage(from: iURL) { image in
-                if let i = image {
-                    self.image = i
-                }
+        self.imageView.downloadImage(from: iURL) { image in
+            if let i = image {
+                self.image = i
             }
         }
-        
     }
     
     

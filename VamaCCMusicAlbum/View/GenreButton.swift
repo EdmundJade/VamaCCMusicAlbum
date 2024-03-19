@@ -9,9 +9,9 @@ import Foundation
 import UIKit
 
 class GenreButton:UIButton {
-    var genre:[String:String]?
+    var genre:Genre?
     
-    convenience init(genre:[String:String]) {
+    convenience init(genre:Genre) {
         self.init(type: .custom)
         self.genre = genre
         self.layer.cornerRadius = 10.0
