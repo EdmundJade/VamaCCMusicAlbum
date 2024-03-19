@@ -37,7 +37,7 @@
 		49D4926C2BA93555007195D1 /* MusicAlbumsInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D4926B2BA93555007195D1 /* MusicAlbumsInstance.swift */; };
 		49D492742BA937F3007195D1 /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D492732BA937F3007195D1 /* Feed.swift */; };
 		49D492782BA96EC6007195D1 /* FeedInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D492772BA96EC6007195D1 /* FeedInstance.swift */; };
-		49D4927C2BA97912007195D1 /* Realm+Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D4927B2BA97912007195D1 /* Realm+Parser.swift */; };
+		49D4927C2BA97912007195D1 /* Realm+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D4927B2BA97912007195D1 /* Realm+Extensions.swift */; };
 		666C7B6AD3CBEFCC40852C1B /* Pods_VamaCCMusicAlbum.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 763A14E5332FDECD425F4D54 /* Pods_VamaCCMusicAlbum.framework */; };
 /* End PBXBuildFile section */
 
@@ -75,7 +75,7 @@
 		49D4926B2BA93555007195D1 /* MusicAlbumsInstance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicAlbumsInstance.swift; sourceTree = "<group>"; };
 		49D492732BA937F3007195D1 /* Feed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feed.swift; sourceTree = "<group>"; };
 		49D492772BA96EC6007195D1 /* FeedInstance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedInstance.swift; sourceTree = "<group>"; };
-		49D4927B2BA97912007195D1 /* Realm+Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Realm+Parser.swift"; sourceTree = "<group>"; };
+		49D4927B2BA97912007195D1 /* Realm+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Realm+Extensions.swift"; sourceTree = "<group>"; };
 		763A14E5332FDECD425F4D54 /* Pods_VamaCCMusicAlbum.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VamaCCMusicAlbum.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7E3E51B79F3D5823BB3582D /* Pods-VamaCCMusicAlbum.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VamaCCMusicAlbum.debug.xcconfig"; path = "Target Support Files/Pods-VamaCCMusicAlbum/Pods-VamaCCMusicAlbum.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -196,7 +196,7 @@
 				49D492732BA937F3007195D1 /* Feed.swift */,
 				49D492692BA93473007195D1 /* FeedRepository.swift */,
 				49D492772BA96EC6007195D1 /* FeedInstance.swift */,
-				49D4927B2BA97912007195D1 /* Realm+Parser.swift */,
+				49D4927B2BA97912007195D1 /* Realm+Extensions.swift */,
 				49D4926B2BA93555007195D1 /* MusicAlbumsInstance.swift */,
 			);
 			path = Model;
@@ -362,7 +362,7 @@
 				49D492602BA8ABB3007195D1 /* UIImageView+Loading.swift in Sources */,
 				49D492502BA8387F007195D1 /* MusicAlbumViewController.swift in Sources */,
 				49D4926A2BA93473007195D1 /* FeedRepository.swift in Sources */,
-				49D4927C2BA97912007195D1 /* Realm+Parser.swift in Sources */,
+				49D4927C2BA97912007195D1 /* Realm+Extensions.swift in Sources */,
 				49D492562BA849FB007195D1 /* UIColor+Hex.swift in Sources */,
 				49D4922F2BA816C5007195D1 /* ProjectCoordinator.swift in Sources */,
 				49D492162BA7EE62007195D1 /* AppDelegate.swift in Sources */,
