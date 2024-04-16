@@ -7,12 +7,30 @@
 
 import Foundation
 import UIKit
+//import RxSwift
+//import RxCocoa
+import Combine
 
 let collectionPadding = 15.0
 let normalReferenceSize = 65.0
 let mosiacReferenceSize = 46.0
 
 class Top100View: MusicAlbumView {
+    
+    
+    lazy var searchBar: UISearchBar = {
+        let sb = UISearchBar(frame: CGRectZero)
+        sb.placeholder = "Search Music Album"
+        sb.searchBarStyle = UISearchBar.Style.default
+        sb.sizeToFit()
+        sb.isTranslucent = false
+        sb.backgroundImage = UIImage()
+        sb.delegate = self
+        sb.translatesAutoresizingMaskIntoConstraints = false
+//        sb.rx.text.throttle(for: .milliseconds(300), scheduler: MainScheduler.instance, latest: true).distinctUntilChanged()
+        
+        return sb
+    }()
     
     
     lazy var collectionView: UICollectionView = {
@@ -59,6 +77,7 @@ class Top100View: MusicAlbumView {
     required init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .white
+        self.addSubview(self.searchBar)
         self.addSubview(collectionView)
         self.addSubview(activityIndicator)
         self.setUpConstraints()
@@ -73,11 +92,19 @@ class Top100View: MusicAlbumView {
     }
     
     func setUpConstraints() {
+        let searchBarConstraints = [
+            searchBar.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            searchBar.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            searchBar.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor)
+        ]
+        NSLayoutConstraint.activate(searchBarConstraints)
+        
+        
         let collectionViewConstraints = [
             collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            collectionView.topAnchor.constraint(equalTo: self.topAnchor)
+            collectionView.topAnchor.constraint(equalTo: self.searchBar.bottomAnchor)
         ]
         NSLayoutConstraint.activate(collectionViewConstraints)
     }
@@ -112,6 +139,20 @@ class Top100View: MusicAlbumView {
     @objc func refresh(_ sender: UIRefreshControl) {
        // Code to refresh table view
         self.getData()
+    }
+}
+
+extension Top100View: UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        guard let vm = self.viewModel as? Top100ViewModel else {
+            return
+        }
+        
+        vm.debouncer?.text = searchText
+        
+//                simulateButtonTapEvents(buttonTapPublisher)
+        
     }
 }
 

@@ -4,19 +4,33 @@ PODS:
   - Realm/Headers (10.48.0)
   - RealmSwift (10.48.0):
     - Realm (= 10.48.0)
+  - RxCocoa (6.6.0):
+    - RxRelay (= 6.6.0)
+    - RxSwift (= 6.6.0)
+  - RxRelay (6.6.0):
+    - RxSwift (= 6.6.0)
+  - RxSwift (6.6.0)
 
 DEPENDENCIES:
   - RealmSwift (~> 10)
+  - RxCocoa (= 6.6.0)
+  - RxSwift (= 6.6.0)
 
 SPEC REPOS:
   trunk:
     - Realm
     - RealmSwift
+    - RxCocoa
+    - RxRelay
+    - RxSwift
 
 SPEC CHECKSUMS:
   Realm: ac7ec3bd884b42282431fc414cc0bb3e92d726cf
   RealmSwift: 4eb8b254ebe413cbc486c5a366f2a315b54d75f7
+  RxCocoa: 44a80de90e25b739b5aeaae3c8c371a32e3343cc
+  RxRelay: 45eaa5db8ee4fb50e5ebd57deec0159e97fa51e6
+  RxSwift: a4b44f7d24599f674deebd1818eab82e58410632
 
-PODFILE CHECKSUM: efbbdc8a06e3ccfc089aa91325ceb60bee0ff8fe
+PODFILE CHECKSUM: 813f5e2d54658a2882d76a6b75b27d8efeefbf62
 
 COCOAPODS: 1.15.2

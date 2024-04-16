@@ -7,5 +7,7 @@ target 'VamaCCMusicAlbum' do
 
   # Pods for testnewapp
   pod 'RealmSwift', '~>10'
+  pod 'RxSwift', '6.6.0'
+  pod 'RxCocoa', '6.6.0'
 
 end

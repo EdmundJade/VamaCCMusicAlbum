@@ -7,14 +7,24 @@
 
 import Foundation
 import UIKit
+import Combine
 
 
 class Top100ViewModel: MusicAlbumViewModel {
+    var debouncer:SearchTextDebounce?
+    var throttler:SearchTextThrottle?
+    
     var rssFetcher = RSSFetcher()
     var albums:[MusicAlbum]?
     
     required init() {
         super.init()
+        debouncer = SearchTextDebounce(searchCallback:searchForText)
+        throttler = SearchTextThrottle(searchCallback:searchForText)
+    }
+    
+    func searchForText(_ debouncedText:String) {
+        print(debouncedText)
     }
     
     func getData(completion: @escaping () -> Void) {
@@ -62,3 +72,46 @@ class Top100ViewModel: MusicAlbumViewModel {
         }
     }
 }
+
+public final class SearchTextThrottle: ObservableObject {
+    @Published var text: String = ""
+    @Published var throttleText: String = ""
+    private var bag = Set<AnyCancellable>()
+    private var callback:(String) -> Void?
+
+    public init(searchCallback: @escaping (String) -> Void?, dueTime: TimeInterval = 0.5) {
+        callback = searchCallback
+        $text
+            .removeDuplicates()
+            .throttle(for: .seconds(dueTime),
+                      scheduler: DispatchQueue.main, latest: false)
+            .sink(receiveValue: { [weak self] value in
+                self?.throttleText = value
+                self?.callback(value)
+            })
+            .store(in: &bag)
+    }
+}
+
+
+
+public final class SearchTextDebounce: ObservableObject {
+    @Published var text: String = ""
+    @Published var debouncedText: String = ""
+    private var bag = Set<AnyCancellable>()
+    private var callback:(String) -> Void?
+
+    public init(searchCallback: @escaping (String) -> Void?, dueTime: TimeInterval = 0.5) {
+        callback = searchCallback
+        $text
+            .removeDuplicates()
+            .debounce(for: .seconds(dueTime),
+                      scheduler: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] value in
+                self?.debouncedText = value
+                self?.callback(value)
+            })
+            .store(in: &bag)
+    }
+}
+
